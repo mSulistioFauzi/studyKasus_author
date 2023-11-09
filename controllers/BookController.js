@@ -108,7 +108,7 @@ const deleteBook = (req, res) => {
     pool.getConnection((err, connection) => {
         if(err) throw err
 
-        connection.query(query, [data], (err, results) => {
+        connection.query(query, (err, results) => {
             if(err) throw err
 
             if(results.affectedRows == 0) {
