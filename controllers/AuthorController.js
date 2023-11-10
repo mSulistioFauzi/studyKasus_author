@@ -7,7 +7,7 @@ const {
 const pool = mysql.createPool(dbConfig)
 
 const getAuthors = (req, res) => {
-    const query = "SELECT * FROM author"
+    const query = "SELECT * FROM authors"
 
     pool.getConnection((err, connection) => {
         if(err) throw err
@@ -25,7 +25,7 @@ const getAuthors = (req, res) => {
 const getAuthor =((req, res) => {
     const id = req.params.id
 
-    const query = `SELECT * FROM author WHERE id=${id}`
+    const query = `SELECT * FROM authors WHERE id=${id}`
     
     pool.getConnection((err, connection) => {
         if(err) throw err
@@ -54,7 +54,7 @@ const addAuthor = (req, res) => {
         media_sosial: req.body.media_sosial
     }
 
-    const query = 'INSERT INTO author SET ?'
+    const query = 'INSERT INTO authors SET ?'
 
     pool.getConnection((err, connection) => {
         if(err) throw err
@@ -80,7 +80,7 @@ const updateAuthor = ((req, res) => {
         media_sosial: req.body.media_sosial
     }
 
-    const query = `UPDATE author SET ? WHERE id=${id}`
+    const query = `UPDATE authors SET ? WHERE id=${id}`
 
     pool.getConnection((err, connection) => {
         if(err) throw err
@@ -103,7 +103,7 @@ const updateAuthor = ((req, res) => {
 const deleteAuthor = (req, res) => {
     const id = req.params.id
 
-    const query = `DELETE FROM author WHERE id=${id}`
+    const query = `DELETE FROM authors WHERE id=${id}`
 
     pool.getConnection((err, connection) => {
         if(err) throw err
